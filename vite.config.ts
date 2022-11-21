@@ -6,9 +6,7 @@ import vue2 from "@vitejs/plugin-vue2";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production'
-    ? '/notes-page/'
-    : '/',
+  base: process.env.NODE_ENV === "production" ? "/notes-page/" : "/",
   plugins: [
     vue2(),
     legacy({
