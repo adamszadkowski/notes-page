@@ -1,13 +1,13 @@
 <template>
   <section class="notes-page">
-    <single-note color="red" syllable="Tu" :is-partial="true" />
-    <single-note color="orange" syllable="taj" :is-partial="false" />
-    <single-note color="red" syllable="sy" :is-partial="true" />
-    <single-note color="green" syllable="la" :is-partial="true" />
-    <single-note color="orange" syllable="by" :is-partial="false" />
-    <single-note color="red" syllable="bę" :is-partial="true" />
-    <single-note color="orange" syllable="dą" :is-partial="false" />
-    <single-note color="green" syllable="hej" :is-partial="false" />
+    <single-note note="c" syllable="Tu" :is-partial="true" />
+    <single-note note="d" syllable="taj" :is-partial="false" />
+    <single-note note="b" syllable="sy" :is-partial="true" />
+    <single-note note="e" syllable="la" :is-partial="true" />
+    <single-note note="f" syllable="by" :is-partial="false" />
+    <single-note note="g" syllable="bę" :is-partial="true" />
+    <single-note note="a" syllable="dą" :is-partial="false" />
+    <single-note note="c" syllable="hej" :is-partial="false" />
   </section>
 </template>
 

@@ -1,22 +1,30 @@
 <template>
   <div class="notes-page__note">
-    <div :class="colorClass"></div>
+    <div class="notes-page__icon" :style="colorStyle"></div>
     <div :class="syllableClass">{{ syllable }}</div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useColorMappingStore } from "@/stores/color-mapping";
 
 export default defineComponent({
+  setup() {
+    const store = useColorMappingStore();
+    return { store };
+  },
   props: {
     syllable: String,
-    color: String,
+    note: String,
     isPartial: Boolean,
   },
   computed: {
-    colorClass() {
-      return ["notes-page__icon", "notes-page__icon--" + this.color];
+    colorStyle() {
+      return {
+        "background-color":
+          (this.note && this.store.getColor(this.note)) ?? "gray",
+      };
     },
     syllableClass() {
       return [
@@ -46,18 +54,6 @@ export default defineComponent({
       content: "";
       display: block;
       padding-top: 100%;
-    }
-
-    &--red {
-      background-color: red;
-    }
-
-    &--orange {
-      background-color: orange;
-    }
-
-    &--green {
-      background-color: green;
     }
   }
 

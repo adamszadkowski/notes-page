@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-interface ColorMappingState {
+export interface ColorMappingState {
   mapping: Map<string, string>;
 }
 
