@@ -8,7 +8,7 @@
         :syllable="note.syllable"
         :is-partial="note.isPartial"
       />
-      <div v-else :key="index"></div>
+      <div v-else :key="`${index}else`"></div>
     </template>
   </section>
 </template>
