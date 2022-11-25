@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import NotesPage from "@/components/NotesPage.vue"
+import NotesPage from "@/components/NotesPage.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
