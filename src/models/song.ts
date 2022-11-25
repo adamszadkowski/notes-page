@@ -1,4 +1,5 @@
 export interface Song {
+  title: string;
   notes: Array<Note>;
 }
 

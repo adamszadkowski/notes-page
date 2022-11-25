@@ -1,6 +1,7 @@
 <template>
   <main>
-    <notes-page :song="song" :notes-in-row="8"></notes-page>
+    <h1>{{ song.title }}</h1>
+    <notes-page class="notes-page" :song="song" :notes-in-row="8"></notes-page>
   </main>
 </template>
 
@@ -15,6 +16,7 @@ export default defineComponent({
   data() {
     return {
       song: {
+        title: "Testowa piosenka",
         notes: [
           { note: "c", syllable: "Tu-" },
           { note: "d", syllable: "taj" },
@@ -37,9 +39,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 main {
   display: flex;
-  justify-content: center;
-  align-content: flex-start;
-  align-items: stretch;
-  height: 100vh;
+  flex-direction: column;
+  align-items: center;
 }
 </style>
