@@ -62,6 +62,12 @@ export default defineComponent({
     text-align: center;
     width: 100%;
 
+    @media (max-width: 620px) {
+      & {
+        font-size: 1em;
+      }
+    }
+
     &--partial {
       position: relative;
 
