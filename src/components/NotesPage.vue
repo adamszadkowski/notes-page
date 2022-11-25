@@ -12,15 +12,16 @@
 
 <script lang="ts">
 import SingleNote from "@/components/SingleNote.vue";
+import type { Note, Song } from "@/models/song";
 import { defineComponent } from "vue";
-import { Song, Note } from "@/models/song";
+import type { PropType } from "vue/types/umd";
 
 export default defineComponent({
   components: {
     SingleNote,
   },
   props: {
-    song: { type: Song, required: true },
+    song: { type: Object as PropType<Song>, required: true },
     notesInRow: { type: Number, required: true },
   },
   computed: {

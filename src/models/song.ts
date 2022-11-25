@@ -1,8 +1,8 @@
-export class Song {
+export interface Song {
   notes: Array<Note>;
 }
 
-export class Note {
+export interface Note {
   note: string;
   syllable: string;
 }
