@@ -1,12 +1,15 @@
 <template>
   <section class="notes-page" :style="sectionStyle">
-    <single-note
-      v-for="(note, index) in notes"
-      :key="index"
-      :note="note.note"
-      :syllable="note.syllable"
-      :is-partial="note.isPartial"
-    />
+    <template v-for="(note, index) in notes">
+      <single-note
+        v-if="note != null"
+        :key="index"
+        :note="note.note"
+        :syllable="note.syllable"
+        :is-partial="note.isPartial"
+      />
+      <div v-else :key="index"></div>
+    </template>
   </section>
 </template>
 
@@ -26,11 +29,14 @@ export default defineComponent({
   },
   computed: {
     notes() {
-      return this.song.notes.map((n: Note) => ({
-        note: n.note,
-        syllable: n.syllable.replace(/-$/, ""),
-        isPartial: n.syllable.endsWith("-"),
-      }));
+      return this.song.notes.map((n: Note) => {
+        if (n == null) return null;
+        return {
+          note: n.note,
+          syllable: n.syllable.replace(/-$/, ""),
+          isPartial: n.syllable.endsWith("-"),
+        };
+      });
     },
     sectionStyle() {
       return {
