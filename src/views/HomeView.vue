@@ -31,5 +31,9 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .notes-page {
+    max-width: 800px;
+  }
 }
 </style>

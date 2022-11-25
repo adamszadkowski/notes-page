@@ -43,7 +43,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .notes-page {
-  width: 800px;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   align-content: start;
