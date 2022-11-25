@@ -1,5 +1,5 @@
 <template>
-  <section class="notes-page">
+  <section class="notes-page" :style="sectionStyle">
     <single-note
       v-for="(note, index) in notes"
       :key="index"
@@ -21,6 +21,7 @@ export default defineComponent({
   },
   props: {
     song: { type: Song, required: true },
+    notesInRow: { type: Number, required: true },
   },
   computed: {
     notes() {
@@ -29,6 +30,11 @@ export default defineComponent({
         syllable: n.syllable.replace(/-$/, ""),
         isPartial: n.syllable.endsWith("-"),
       }));
+    },
+    sectionStyle() {
+      return {
+        "grid-template-columns": `repeat(${this.notesInRow}, 1fr)`,
+      };
     },
   },
 });

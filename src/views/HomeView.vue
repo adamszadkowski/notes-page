@@ -1,6 +1,6 @@
 <template>
   <main>
-    <notes-page :song="song"></notes-page>
+    <notes-page :song="song" :notes-in-row="8"></notes-page>
   </main>
 </template>
 
@@ -24,6 +24,9 @@ export default defineComponent({
           { note: "g", syllable: "bę-" },
           { note: "a", syllable: "dą" },
           { note: "c", syllable: "hej!" },
+          { note: "c", syllable: "sia-" },
+          { note: "d", syllable: "la-" },
+          { note: "c", syllable: "la" },
         ],
       },
     };
