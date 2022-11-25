@@ -7,31 +7,21 @@
 
 <script lang="ts">
 import NotesPage from "@/components/NotesPage.vue";
+import { useSongsStore } from "@/stores/songs";
 import { defineComponent } from "vue";
 
 export default defineComponent({
+  setup() {
+    const store = useSongsStore();
+    return { store };
+  },
   components: {
     NotesPage,
   },
-  data() {
-    return {
-      song: {
-        title: "Testowa piosenka",
-        notes: [
-          { note: "c", syllable: "Tu-" },
-          { note: "d", syllable: "taj" },
-          { note: "b", syllable: "sy-" },
-          { note: "e", syllable: "la-" },
-          { note: "f", syllable: "by" },
-          { note: "g", syllable: "bę-" },
-          { note: "a", syllable: "dą" },
-          { note: "c", syllable: "hej!" },
-          { note: "c", syllable: "sia-" },
-          { note: "d", syllable: "la-" },
-          { note: "c", syllable: "la" },
-        ],
-      },
-    };
+  computed: {
+    song() {
+      return this.store.songs[0];
+    },
   },
 });
 </script>
