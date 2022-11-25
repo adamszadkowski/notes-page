@@ -20,17 +20,26 @@ export default defineComponent({
   },
   data() {
     return {
-      notes: [
-        { note: "c", syllable: "Tu", isPartial: true },
-        { note: "d", syllable: "taj", isPartial: false },
-        { note: "b", syllable: "sy", isPartial: true },
-        { note: "e", syllable: "la", isPartial: true },
-        { note: "f", syllable: "by", isPartial: false },
-        { note: "g", syllable: "bę", isPartial: true },
-        { note: "a", syllable: "dą", isPartial: false },
-        { note: "c", syllable: "hej!", isPartial: false },
+      song: [
+        { note: "c", syllable: "Tu-" },
+        { note: "d", syllable: "taj" },
+        { note: "b", syllable: "sy-" },
+        { note: "e", syllable: "la-" },
+        { note: "f", syllable: "by" },
+        { note: "g", syllable: "bę-" },
+        { note: "a", syllable: "dą" },
+        { note: "c", syllable: "hej!" },
       ],
     };
+  },
+  computed: {
+    notes() {
+      return this.song.map((n) => ({
+        note: n.note,
+        syllable: n.syllable.replace(/-$/, ""),
+        isPartial: n.syllable.endsWith("-"),
+      }));
+    },
   },
 });
 </script>
