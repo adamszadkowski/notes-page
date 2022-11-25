@@ -10,12 +10,12 @@ describe("color-mapping", () => {
   });
 
   it("get default mappings", () => {
-    expect(store.getColor("c")).toBe("#dd1a1a");
-    expect(store.getColor("d")).toBe("#82dd1a");
-    expect(store.getColor("e")).toBe("#ae1cbe");
-    expect(store.getColor("f")).toBe("#e28710");
-    expect(store.getColor("g")).toBe("#2528ee");
-    expect(store.getColor("a")).toBe("#eae612");
-    expect(store.getColor("b")).toBe("#f37ab8");
+    expect(store.getColor("c")).toBe("#f79fb8");
+    expect(store.getColor("d")).toBe("#ff6908");
+    expect(store.getColor("e")).toBe("#ffcb08");
+    expect(store.getColor("f")).toBe("#96ff08");
+    expect(store.getColor("g")).toBe("#51a0ff");
+    expect(store.getColor("a")).toBe("#9d3701");
+    expect(store.getColor("b")).toBe("#fc092c");
   });
 });
