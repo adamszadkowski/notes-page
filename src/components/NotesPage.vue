@@ -1,13 +1,12 @@
 <template>
   <section class="notes-page">
-    <single-note note="c" syllable="Tu" :is-partial="true" />
-    <single-note note="d" syllable="taj" :is-partial="false" />
-    <single-note note="b" syllable="sy" :is-partial="true" />
-    <single-note note="e" syllable="la" :is-partial="true" />
-    <single-note note="f" syllable="by" :is-partial="false" />
-    <single-note note="g" syllable="bę" :is-partial="true" />
-    <single-note note="a" syllable="dą" :is-partial="false" />
-    <single-note note="c" syllable="hej" :is-partial="false" />
+    <single-note
+      v-for="(note, index) in notes"
+      :key="index"
+      :note="note.note"
+      :syllable="note.syllable"
+      :is-partial="note.isPartial"
+    />
   </section>
 </template>
 
@@ -18,6 +17,20 @@ import { defineComponent } from "vue";
 export default defineComponent({
   components: {
     SingleNote,
+  },
+  data() {
+    return {
+      notes: [
+        { note: "c", syllable: "Tu", isPartial: true },
+        { note: "d", syllable: "taj", isPartial: false },
+        { note: "b", syllable: "sy", isPartial: true },
+        { note: "e", syllable: "la", isPartial: true },
+        { note: "f", syllable: "by", isPartial: false },
+        { note: "g", syllable: "bę", isPartial: true },
+        { note: "a", syllable: "dą", isPartial: false },
+        { note: "c", syllable: "hej!", isPartial: false },
+      ],
+    };
   },
 });
 </script>
