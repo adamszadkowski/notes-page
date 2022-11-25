@@ -13,28 +13,18 @@
 <script lang="ts">
 import SingleNote from "@/components/SingleNote.vue";
 import { defineComponent } from "vue";
+import { Song, Note } from "@/models/song";
 
 export default defineComponent({
   components: {
     SingleNote,
   },
-  data() {
-    return {
-      song: [
-        { note: "c", syllable: "Tu-" },
-        { note: "d", syllable: "taj" },
-        { note: "b", syllable: "sy-" },
-        { note: "e", syllable: "la-" },
-        { note: "f", syllable: "by" },
-        { note: "g", syllable: "bę-" },
-        { note: "a", syllable: "dą" },
-        { note: "c", syllable: "hej!" },
-      ],
-    };
+  props: {
+    song: { type: Song, required: true },
   },
   computed: {
     notes() {
-      return this.song.map((n) => ({
+      return this.song.notes.map((n: Note) => ({
         note: n.note,
         syllable: n.syllable.replace(/-$/, ""),
         isPartial: n.syllable.endsWith("-"),

@@ -1,6 +1,6 @@
 <template>
   <main>
-    <notes-page></notes-page>
+    <notes-page :song="song"></notes-page>
   </main>
 </template>
 
@@ -11,6 +11,22 @@ import { defineComponent } from "vue";
 export default defineComponent({
   components: {
     NotesPage,
+  },
+  data() {
+    return {
+      song: {
+        notes: [
+          { note: "c", syllable: "Tu-" },
+          { note: "d", syllable: "taj" },
+          { note: "b", syllable: "sy-" },
+          { note: "e", syllable: "la-" },
+          { note: "f", syllable: "by" },
+          { note: "g", syllable: "bę-" },
+          { note: "a", syllable: "dą" },
+          { note: "c", syllable: "hej!" },
+        ],
+      },
+    };
   },
 });
 </script>
