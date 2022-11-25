@@ -15,15 +15,14 @@ export default defineComponent({
     return { store };
   },
   props: {
-    syllable: String,
-    note: String,
-    isPartial: Boolean,
+    syllable: { type: String, required: true },
+    note: { type: String, required: true },
+    isPartial: { type: Boolean, required: true },
   },
   computed: {
     colorStyle() {
       return {
-        "background-color":
-          (this.note && this.store.getColor(this.note)) ?? "gray",
+        "background-color": this.store.getColor(this.note) ?? "gray",
       };
     },
     syllableClass() {
