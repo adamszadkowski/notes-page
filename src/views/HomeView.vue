@@ -20,7 +20,7 @@ export default defineComponent({
   },
   computed: {
     song() {
-      return this.store.songs[0];
+      return this.store.songs[1];
     },
   },
 });

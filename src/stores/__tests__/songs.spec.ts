@@ -10,7 +10,10 @@ describe("songs", () => {
   });
 
   it("create sample song", () => {
-    expect(store.songs).toHaveLength(1);
-    expect(store.songs.map((s) => s.title)).toContain("Testowa piosenka");
+    expect(store.songs).toHaveLength(2);
+    expect(store.songs.map((s) => s.title)).to.contains(
+      "Testowa piosenka",
+      "Panie Janie"
+    );
   });
 });
