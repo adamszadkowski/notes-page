@@ -109,7 +109,10 @@ $hovered-color: #586311;
         display: block;
         width: 100%;
         padding: 5px;
+        padding-left: 10px;
         background: rgb(243, 243, 243);
+        color: $base-color;
+        cursor: default;
 
         &:has(+ li) {
           border-bottom: 1px solid rgb(224, 224, 224);
@@ -117,6 +120,7 @@ $hovered-color: #586311;
 
         &:hover {
           background: rgb(249, 249, 249);
+          color: $hovered-color;
         }
       }
     }
