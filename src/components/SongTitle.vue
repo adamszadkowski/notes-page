@@ -7,8 +7,8 @@
     </h1>
     <div class="song-title__dropdown" :style="dropdownStyle">
       <ul>
-        <li v-for="song in songs" :key="song.id">
-          <a @click="selectSong(song.id)">{{ song.title }}</a>
+        <li v-for="song in songs" :key="song.id" @click="selectSong(song.id)">
+          {{ song.title }}
         </li>
       </ul>
     </div>
