@@ -1,6 +1,13 @@
 <template>
   <h1 class="song-title">
-    <a class="song-title__link">{{ currentSongTitle }}&nbsp;</a>
+    <a @click="toggleDropdown()" class="song-title__link"
+      >{{ currentSongTitle }}&nbsp;</a
+    >
+    <div class="song-title__dropdown" :style="dropdownStyle">
+      <ul>
+        <li v-for="song in songs" :key="song.id">{{ song.title }}</li>
+      </ul>
+    </div>
   </h1>
 </template>
 
@@ -14,9 +21,25 @@ export default defineComponent({
 
     return { store };
   },
+  methods: {
+    toggleDropdown() {
+      this.isVisibile = !this.isVisibile;
+    },
+  },
+  data() {
+    return {
+      isVisibile: false,
+    };
+  },
   computed: {
     currentSongTitle() {
       return this.store.currentSong.title;
+    },
+    songs() {
+      return this.store.songs;
+    },
+    dropdownStyle() {
+      return { display: this.isVisibile ? "block" : "none" };
     },
   },
 });
@@ -51,6 +74,16 @@ $hovered-color: #586311;
       border-width: 0 0.12em 0.12em 0;
       transform: rotate(45deg);
     }
+  }
+
+  &__dropdown {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    background-color: white;
+    z-index: 1;
+    box-shadow: 10px 10px 25px rgba($color: $base-color, $alpha: 0.4);
   }
 }
 </style>
