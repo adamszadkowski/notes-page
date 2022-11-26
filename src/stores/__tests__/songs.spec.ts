@@ -16,4 +16,8 @@ describe("songs", () => {
       "Panie Janie"
     );
   });
+
+  it("selects Panie Janie by default", () => {
+    expect(store.currentSong.title).toBe("Panie Janie");
+  });
 });

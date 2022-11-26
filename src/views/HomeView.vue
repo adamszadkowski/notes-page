@@ -6,8 +6,8 @@
       </ul>
     </nav>
     <section class="song">
-      <h1>{{ song.title }}</h1>
-      <notes-page class="notes-page" :song="song"></notes-page>
+      <h1>{{ currentSong.title }}</h1>
+      <notes-page class="notes-page" :song="currentSong"></notes-page>
     </section>
   </main>
 </template>
@@ -29,8 +29,8 @@ export default defineComponent({
     songs() {
       return this.store.songs;
     },
-    song() {
-      return this.songs[1];
+    currentSong() {
+      return this.store.currentSong;
     },
   },
 });
