@@ -8,7 +8,7 @@
       </ul>
     </nav>
     <section class="song">
-      <h1>{{ currentSong.title }}</h1>
+      <song-title></song-title>
       <notes-page class="notes-page" :song="currentSong"></notes-page>
     </section>
   </main>
@@ -16,6 +16,7 @@
 
 <script lang="ts">
 import NotesPage from "@/components/NotesPage.vue";
+import SongTitle from "@/components/SongTitle.vue";
 import { useSongsStore } from "@/stores/songs";
 import { defineComponent } from "vue";
 
@@ -26,6 +27,7 @@ export default defineComponent({
   },
   components: {
     NotesPage,
+    SongTitle,
   },
   computed: {
     songs() {
