@@ -10,6 +10,7 @@ export const useSongsStore = defineStore({
   state: (): SongsState => ({
     songs: [
       {
+        id: Math.random().toString(16).slice(2),
         title: "Testowa piosenka",
         notesInRow: 7,
         notes: [
@@ -27,6 +28,7 @@ export const useSongsStore = defineStore({
         ],
       },
       {
+        id: Math.random().toString(16).slice(2),
         title: "Panie Janie",
         notesInRow: 8,
         notes: [
