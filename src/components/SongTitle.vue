@@ -7,7 +7,9 @@
     </h1>
     <div class="song-title__dropdown" :style="dropdownStyle">
       <ul>
-        <li v-for="song in songs" :key="song.id">{{ song.title }}</li>
+        <li v-for="song in songs" :key="song.id">
+          <a @click="selectSong(song.id)">{{ song.title }}</a>
+        </li>
       </ul>
     </div>
   </section>
@@ -26,6 +28,10 @@ export default defineComponent({
   methods: {
     toggleDropdown() {
       this.isVisibile = !this.isVisibile;
+    },
+    selectSong(id: string) {
+      this.store.selectSongById(id);
+      this.toggleDropdown();
     },
   },
   data() {
@@ -92,6 +98,28 @@ $hovered-color: #586311;
     background-color: white;
     z-index: 1;
     box-shadow: 10px 10px 25px rgba($color: $base-color, $alpha: 0.4);
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        padding: 5px;
+        background: rgb(243, 243, 243);
+
+        &:has(+ li) {
+          border-bottom: 1px solid rgb(224, 224, 224);
+        }
+
+        &:hover {
+          background: rgb(249, 249, 249);
+        }
+      }
+    }
   }
 }
 </style>
