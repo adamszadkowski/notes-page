@@ -1,5 +1,6 @@
 export interface Song {
   title: string;
+  notesInRow: number;
   notes: Array<Note>;
 }
 

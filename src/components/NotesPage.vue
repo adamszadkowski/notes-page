@@ -25,7 +25,6 @@ export default defineComponent({
   },
   props: {
     song: { type: Object as PropType<Song>, required: true },
-    notesInRow: { type: Number, required: true },
   },
   computed: {
     notes() {
@@ -40,7 +39,7 @@ export default defineComponent({
     },
     sectionStyle() {
       return {
-        "grid-template-columns": `repeat(${this.notesInRow}, 1fr)`,
+        "grid-template-columns": `repeat(${this.song.notesInRow}, 1fr)`,
       };
     },
   },

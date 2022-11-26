@@ -1,7 +1,7 @@
 <template>
   <main>
     <h1>{{ song.title }}</h1>
-    <notes-page class="notes-page" :song="song" :notes-in-row="8"></notes-page>
+    <notes-page class="notes-page" :song="song"></notes-page>
   </main>
 </template>
 

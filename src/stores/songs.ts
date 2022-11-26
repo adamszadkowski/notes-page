@@ -11,6 +11,7 @@ export const useSongsStore = defineStore({
     songs: [
       {
         title: "Testowa piosenka",
+        notesInRow: 7,
         notes: [
           { note: "c", syllable: "Tu-" },
           { note: "d", syllable: "taj" },
@@ -27,6 +28,7 @@ export const useSongsStore = defineStore({
       },
       {
         title: "Panie Janie",
+        notesInRow: 8,
         notes: [
           { note: "c", syllable: "Pa-" },
           { note: "d", syllable: "nie" },
