@@ -5,7 +5,7 @@
         <li v-for="song in songs" :key="song.id">{{ song.title }}</li>
       </ul>
     </nav>
-    <section>
+    <section class="song">
       <h1>{{ song.title }}</h1>
       <notes-page class="notes-page" :song="song"></notes-page>
     </section>
@@ -37,13 +37,12 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-section {
+section.song {
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  .notes-page {
-    max-width: 800px;
-  }
+  border: 1px solid rgb(201, 201, 201);
+  max-width: 800px;
 }
 </style>

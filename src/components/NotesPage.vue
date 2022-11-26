@@ -48,12 +48,12 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .notes-page {
+  box-sizing: border-box;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   align-content: start;
   row-gap: 15px;
-  border: 1px solid rgb(201, 201, 201);
   padding: 30px;
 }
 </style>
