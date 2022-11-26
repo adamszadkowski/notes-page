@@ -1,14 +1,16 @@
 <template>
-  <h1 class="song-title">
-    <a @click="toggleDropdown()" class="song-title__link"
-      >{{ currentSongTitle }}&nbsp;</a
-    >
+  <section class="song-title">
+    <h1 class="song-title__header">
+      <a @click="toggleDropdown()" class="song-title__link"
+        >{{ currentSongTitle }}&nbsp;</a
+      >
+    </h1>
     <div class="song-title__dropdown" :style="dropdownStyle">
       <ul>
         <li v-for="song in songs" :key="song.id">{{ song.title }}</li>
       </ul>
     </div>
-  </h1>
+  </section>
 </template>
 
 <script lang="ts">
@@ -48,8 +50,14 @@ export default defineComponent({
 <style lang="scss" scoped>
 $base-color: #3c430b;
 $hovered-color: #586311;
+
 .song-title {
   position: relative;
+
+  &__header {
+    position: relative;
+    font-size: 1.8em;
+  }
 
   &__link {
     color: $base-color;
