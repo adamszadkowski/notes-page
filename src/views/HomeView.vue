@@ -2,7 +2,9 @@
   <main>
     <nav>
       <ul>
-        <li v-for="song in songs" :key="song.id">{{ song.title }}</li>
+        <li v-for="song in songs" :key="song.id">
+          <button @click="selectSong(song.id)">{{ song.title }}</button>
+        </li>
       </ul>
     </nav>
     <section class="song">
@@ -31,6 +33,11 @@ export default defineComponent({
     },
     currentSong() {
       return this.store.currentSong;
+    },
+  },
+  methods: {
+    selectSong(id: string) {
+      this.store.selectSongById(id);
     },
   },
 });

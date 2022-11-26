@@ -84,4 +84,11 @@ export const useSongsStore = defineStore({
     currentSong: (state): Song =>
       state.songs.find((s: Song) => s.id === state.currentSongId),
   },
+  actions: {
+    selectSongById(id: string) {
+      if (!this.songs.find((s: Song) => s.id === id))
+        throw Error("No such id as missing-id");
+      this.currentSongId = id;
+    },
+  },
 });
