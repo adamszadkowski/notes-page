@@ -10,10 +10,15 @@ describe("songs", () => {
   });
 
   it("create sample song", () => {
-    expect(store.songs).toHaveLength(4);
-    expect(store.songs.map((s) => s.title)).to.contains(
-      "Testowa piosenka",
-      "Panie Janie"
+    expect(store.songs).toHaveLength(5);
+    expect(store.songs.map((s) => s.title)).toEqual(
+      expect.arrayContaining([
+        "Testowa piosenka",
+        "Panie Janie",
+        "Wlazł kotek",
+        "Przybieżeli do Betlejem",
+        "Jedzie pociąg",
+      ])
     );
   });
 
