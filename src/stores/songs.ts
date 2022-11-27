@@ -9,11 +9,10 @@ export interface SongsState {
 export const useSongsStore = defineStore({
   id: "songs",
   state: (): SongsState => {
-    const panieJanieSongId = Math.random().toString(16).slice(2);
     return {
       songs: [
         {
-          id: Math.random().toString(16).slice(2),
+          id: "testowa-piosenka",
           title: "Testowa piosenka",
           notesInRow: 7,
           notes: [
@@ -31,7 +30,7 @@ export const useSongsStore = defineStore({
           ],
         },
         {
-          id: panieJanieSongId,
+          id: "panie-janie",
           title: "Panie Janie",
           notesInRow: 8,
           notes: [
@@ -77,7 +76,7 @@ export const useSongsStore = defineStore({
           ],
         },
         {
-          id: Math.random().toString(16).slice(2),
+          id: "wlazl-kotek",
           title: "Wlazł kotek",
           notesInRow: 6,
           notes: [
@@ -108,7 +107,7 @@ export const useSongsStore = defineStore({
           ],
         },
       ],
-      currentSongId: panieJanieSongId,
+      currentSongId: "panie-janie",
     };
   },
   getters: {
