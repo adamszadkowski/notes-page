@@ -18,4 +18,24 @@ describe("color-mapping", () => {
     expect(store.getColor("a")).toBe("#9d3701");
     expect(store.getColor("b")).toBe("#fc092c");
   });
+
+  [
+    { note: "c#", below: "c", above: "d" },
+    { note: "db", below: "c", above: "d" },
+    { note: "d#", below: "d", above: "e" },
+    { note: "eb", below: "d", above: "e" },
+    { note: "f#", below: "f", above: "g" },
+    { note: "gb", below: "f", above: "g" },
+    { note: "g#", below: "g", above: "a" },
+    { note: "ab", below: "g", above: "a" },
+    { note: "a#", below: "a", above: "b" },
+    { note: "bb", below: "a", above: "b" },
+  ].forEach(({ note, below, above }) => {
+    it(`map note ${note} between ${below} and ${above}`, () => {
+      expect(store.getColor1(note)).toEqual([
+        store.getColor(below),
+        store.getColor(above),
+      ]);
+    });
+  });
 });
