@@ -10,11 +10,16 @@
 </template>
 
 <script lang="ts">
+import { useColorMappingStore } from "@/stores/color-mapping";
 import { defineComponent } from "vue";
 
 export default defineComponent({
+  setup() {
+    const store = useColorMappingStore();
+    return { store };
+  },
   props: {
-    color: { type: String, required: true },
+    note: { type: String, required: true },
     isPartial: { type: Boolean, required: true },
   },
   computed: {
@@ -25,7 +30,14 @@ export default defineComponent({
       ];
     },
     colorStyle() {
-      return { "background-color": this.color };
+      const colors = this.store.getColor1(this.note);
+      if (colors.length === 1) {
+        return { "background-color": colors[0] };
+      } else {
+        return {
+          background: `linear-gradient( to right, ${colors[0]} 0%, ${colors[0]} 50%, ${colors[1]} 50%, ${colors[1]} 100% )`,
+        };
+      }
     },
   },
 });

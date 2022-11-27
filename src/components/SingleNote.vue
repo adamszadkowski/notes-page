@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-note :color="color" :is-partial="isPartial">
+    <base-note :note="strippedNote" :is-partial="isPartial">
       <template #content>
         <div :class="colorClass">
           <div class="notes-page__desc--fill" :style="colorStyle"></div>
@@ -30,6 +30,11 @@ export default defineComponent({
     isPartial: { type: Boolean, required: true },
   },
   computed: {
+    strippedNote() {
+      if (this.note.endsWith("+") || this.note.endsWith("-"))
+        return this.note.slice(0, -1);
+      return this.note;
+    },
     colorClass() {
       return [
         ...(this.note.endsWith("+")
