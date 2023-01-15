@@ -58,6 +58,10 @@ export default defineComponent({
     width: 85%;
     position: relative;
 
+    @media print {
+      print-color-adjust: exact !important;
+    }
+
     &::before {
       content: "";
       display: block;
