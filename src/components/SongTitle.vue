@@ -5,7 +5,7 @@
         >{{ currentSongTitle }}&nbsp;</a
       >
     </h1>
-    <div class="song-title__dropdown" :style="dropdownStyle">
+    <div :class="dropdownClasses">
       <ul>
         <li v-for="song in songs" :key="song.id" @click="selectSong(song.id)">
           {{ song.title }}
@@ -46,8 +46,11 @@ export default defineComponent({
     songs() {
       return this.store.songs;
     },
-    dropdownStyle() {
-      return { display: this.isVisibile ? "block" : "none" };
+    dropdownClasses() {
+      return [
+        "song-title__dropdown",
+        ...(this.isVisibile ? ["song-title__dropdown--visible"] : []),
+      ];
     },
   },
 });
@@ -88,9 +91,16 @@ $hovered-color: #586311;
       border-width: 0 0.12em 0.12em 0;
       transform: rotate(45deg);
     }
+
+    @media print {
+      &::after {
+        display: none;
+      }
+    }
   }
 
   &__dropdown {
+    display: none;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -123,6 +133,14 @@ $hovered-color: #586311;
           color: $hovered-color;
         }
       }
+    }
+  }
+
+  &__dropdown--visible {
+    display: block;
+
+    @media print {
+      display: none;
     }
   }
 }
