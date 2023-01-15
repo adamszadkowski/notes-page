@@ -10,10 +10,9 @@ describe("songs", () => {
   });
 
   it("create sample song", () => {
-    expect(store.songs).toHaveLength(5);
+    expect(store.songs).toHaveLength(4);
     expect(store.songs.map((s) => s.title)).toEqual(
       expect.arrayContaining([
-        "Testowa piosenka",
         "Panie Janie",
         "Wlazł kotek",
         "Przybieżeli do Betlejem",
@@ -27,11 +26,11 @@ describe("songs", () => {
   });
 
   it("select song by id", () => {
-    const testSongId = store.songs[0].id;
+    const testSongId = store.songs[1].id;
 
     store.selectSongById(testSongId);
 
-    expect(store.currentSong.title).toBe("Testowa piosenka");
+    expect(store.currentSong.title).toBe("Wlazł kotek");
   });
 
   it("throw on missing id", () => {
