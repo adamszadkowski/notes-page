@@ -41,7 +41,7 @@ export default defineComponent({
   },
   computed: {
     currentSongTitle() {
-      return this.store.currentSong.title;
+      return this.store.currentSong?.title ?? "Wybierz piosenkę";
     },
     songs() {
       return this.store.songs;

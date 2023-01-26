@@ -2,7 +2,11 @@
   <main>
     <section class="song">
       <song-title></song-title>
-      <notes-page class="notes-page" :song="currentSong"></notes-page>
+      <notes-page
+        v-if="currentSong != null"
+        class="notes-page"
+        :song="currentSong"
+      ></notes-page>
     </section>
   </main>
 </template>

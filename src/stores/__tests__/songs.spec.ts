@@ -21,8 +21,8 @@ describe("songs", () => {
     );
   });
 
-  it("selects Panie Janie by default", () => {
-    expect(store.currentSong.title).toBe("Panie Janie");
+  it("selects none initially", () => {
+    expect(store.currentSong).toBeNull();
   });
 
   it("select song by id", () => {

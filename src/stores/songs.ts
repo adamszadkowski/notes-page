@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 
 export interface SongsState {
   songs: Array<Song>;
-  currentSongId: string;
+  currentSongId?: string;
 }
 
 export const useSongsStore = defineStore({
@@ -186,12 +186,12 @@ export const useSongsStore = defineStore({
           ],
         },
       ],
-      currentSongId: "panie-janie",
+      currentSongId: null,
     };
   },
   getters: {
     currentSong: (state): Song =>
-      state.songs.find((s: Song) => s.id === state.currentSongId),
+      state.songs.find((s: Song) => s.id === state.currentSongId) || null,
   },
   actions: {
     selectSongById(id: string) {
