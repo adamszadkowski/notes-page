@@ -65,7 +65,7 @@ export default defineComponent({
     &::before {
       content: "";
       display: block;
-      padding-top: 100%;
+      aspect-ratio: 1;
     }
   }
 
