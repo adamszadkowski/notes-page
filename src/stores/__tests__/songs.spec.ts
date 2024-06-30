@@ -10,7 +10,7 @@ describe("songs", () => {
   });
 
   it("create sample song", () => {
-    expect(store.songs).toHaveLength(5);
+    expect(store.songs).toHaveLength(6);
     expect(store.songs.map((s) => s.title)).toEqual(
       expect.arrayContaining([
         "Panie Janie",
@@ -18,6 +18,7 @@ describe("songs", () => {
         "Przybieżeli do Betlejem",
         "Jedzie pociąg",
         "Kurki trzy",
+        "Wiosna",
       ])
     );
   });
