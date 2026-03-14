@@ -1,8 +1,12 @@
-// https://docs.cypress.io/api/introduction/api.html
-
-describe("My First Test", () => {
-  it("visits the app root url", () => {
+describe("Notes Page", () => {
+  it("loads the app and shows the song selector", () => {
     cy.visit("/");
-    cy.contains("h1", "You did it!");
+    cy.get("h1").should("exist");
+  });
+
+  it("opens the song dropdown on click", () => {
+    cy.visit("/");
+    cy.get("h1 button").click();
+    cy.get("ul li").should("have.length.greaterThan", 0);
   });
 });

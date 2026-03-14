@@ -1,59 +1,78 @@
-# notes-page
+# Notes Page
 
-This template should help get you started developing with Vue 3 in Vite.
+A React 19 application that displays musical notes with colored circles and lyrics. Designed to help users learn songs by visualizing notes and syllables in a grid layout.
 
-## Recommended IDE Setup
+## Tech Stack
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- **React 19** with TypeScript
+- **Vite 6** — build tool and dev server
+- **Zustand 5** — state management
+- **CSS Modules** — component-scoped styles
+- **Vitest** — unit tests
+- **Cypress** — end-to-end tests
 
-## Type Support for `.vue` Imports in TS
+## IDE Setup
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+[VS Code](https://code.visualstudio.com/) with the following extensions:
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## Commands
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
+```bash
+# Start dev server with hot reload
 npm run dev
-```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
+# Type-check and build for production
 npm run build
-```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+# Preview production build (port 4173)
+npm run preview
 
-```sh
+# Run unit tests
 npm run test:unit
-```
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+# Open Cypress for interactive e2e testing
+npm run test:e2e
 
-```sh
-npm run build
-npm run test:e2e # or `npm run test:e2e:ci` for headless testing
-```
+# Run e2e tests headlessly (CI)
+npm run test:e2e:ci
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
+# Lint and auto-fix
 npm run lint
 ```
+
+## Note Notation
+
+Notes use a custom notation:
+
+| Notation | Meaning |
+|----------|---------|
+| `c`, `d`, `e`, `f`, `g`, `a`, `b` | Base notes |
+| `c#`, `d#`, `f#`, `g#`, `a#` | Sharps (two-color gradient) |
+| `db`, `eb`, `gb`, `ab`, `bb` | Flats (two-color gradient) |
+| `c+`, `d+`, ... | Higher octave (up arrow) |
+| `c-`, `d-`, ... | Lower octave (down arrow) |
+
+Syllables ending in `-` are rendered with a hyphen to indicate continuation.
+
+## Adding Songs
+
+Edit `src/stores/songs.ts` and add an entry to the `songs` array:
+
+```ts
+{
+  id: "unique-id",
+  title: "Song Title",
+  notesInRow: 8,          // number of columns in the grid
+  notes: [
+    { note: "c", syllable: "do" },
+    { note: "d+", syllable: "re-" },
+    null,                  // empty grid cell
+  ],
+}
+```
+
+## Production Deploy
+
+The production base path is `/notes-page/` (configured in `vite.config.ts`). Deployed to GitHub Pages.
