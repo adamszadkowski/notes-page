@@ -12,11 +12,13 @@ export function App() {
   const selectSongById = useSongsStore((state) => state.selectSongById);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const songId = params.get("song");
-    if (songId) {
+    const base = import.meta.env.BASE_URL;
+    const path = window.location.pathname;
+    const rel = path.startsWith(base) ? path.slice(base.length) : path.slice(1);
+    const match = rel.match(/^song\/(.+)$/);
+    if (match) {
       try {
-        selectSongById(songId);
+        selectSongById(match[1]);
       } catch {
         // unknown song id — ignore
       }
@@ -24,13 +26,9 @@ export function App() {
   }, []);
 
   useEffect(() => {
-    const url = new URL(window.location.href);
-    if (currentSong) {
-      url.searchParams.set("song", currentSong.id);
-    } else {
-      url.searchParams.delete("song");
-    }
-    history.replaceState(null, "", url.toString());
+    const base = import.meta.env.BASE_URL;
+    const newPath = currentSong ? `${base}song/${currentSong.id}` : base;
+    history.replaceState(null, "", newPath);
   }, [currentSong?.id]);
 
   return (
