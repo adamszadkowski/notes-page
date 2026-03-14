@@ -1,4 +1,4 @@
-import { Menu, Music2, Printer } from "lucide-react";
+import { Menu, Music2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface Props {
@@ -17,20 +17,12 @@ export function AppHeader({ onMenuClick, songTitle }: Props) {
       >
         <Menu size={22} />
       </Button>
-      <div className="flex items-center gap-2 min-w-0 flex-1">
+      <div className="flex items-center gap-2 min-w-0">
         <Music2 size={18} className="text-indigo-500 shrink-0" />
         <span className="text-base font-semibold text-foreground truncate">
           {songTitle ?? "Nuty"}
         </span>
       </div>
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={() => window.print()}
-        aria-label="Drukuj"
-      >
-        <Printer size={20} />
-      </Button>
     </header>
   );
 }
