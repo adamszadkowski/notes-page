@@ -28,7 +28,7 @@ export function App() {
         <div className="flex-1 p-8 max-w-[900px] md:p-8 max-md:px-4 max-md:py-5">
           {currentSong != null ? (
             <>
-              <h1 className="text-[1.75rem] font-bold mb-7 text-slate-900 max-md:text-[1.4rem] max-md:mb-5">
+              <h1 className="text-[1.75rem] font-bold mb-7 text-slate-900 max-md:text-[1.4rem] max-md:mb-5 text-center">
                 {currentSong.title}
               </h1>
               <NotesPage song={currentSong} />
