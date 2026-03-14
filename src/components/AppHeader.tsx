@@ -8,7 +8,7 @@ interface Props {
 
 export function AppHeader({ onMenuClick, songTitle }: Props) {
   return (
-    <header className="flex md:hidden items-center px-1 h-14 bg-background border-b shadow-xs sticky top-0 z-50 shrink-0">
+    <header className="flex md:hidden print:hidden items-center px-1 h-14 bg-background border-b shadow-xs sticky top-0 z-50 shrink-0">
       <Button
         variant="ghost"
         size="icon"
