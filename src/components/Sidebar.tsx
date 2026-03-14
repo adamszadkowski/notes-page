@@ -1,5 +1,6 @@
 import { Music2, X } from "lucide-react";
-import { useSongsStore, selectCurrentSong } from "@/stores/songs";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSongsStore } from "@/stores/songs";
 import styles from "./Sidebar.module.css";
 
 interface Props {
@@ -9,11 +10,11 @@ interface Props {
 
 export function Sidebar({ isOpen, onClose }: Props) {
   const songs = useSongsStore((state) => state.songs);
-  const selectSongById = useSongsStore((state) => state.selectSongById);
-  const currentSong = useSongsStore(selectCurrentSong);
+  const navigate = useNavigate();
+  const { id: currentId } = useParams<{ id?: string }>();
 
   const handleSelect = (id: string) => {
-    selectSongById(id);
+    navigate(`/song/${id}`);
     onClose();
   };
 
@@ -51,9 +52,9 @@ export function Sidebar({ isOpen, onClose }: Props) {
             {songs.map((song) => (
               <li key={song.id}>
                 <button
-                  className={`${styles.songItem} ${song.id === currentSong?.id ? styles.active : ""}`}
+                  className={`${styles.songItem} ${song.id === currentId ? styles.active : ""}`}
                   onClick={() => handleSelect(song.id)}
-                  aria-current={song.id === currentSong?.id ? "true" : undefined}
+                  aria-current={song.id === currentId ? "true" : undefined}
                 >
                   {song.title}
                 </button>
