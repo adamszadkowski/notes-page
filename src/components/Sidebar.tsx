@@ -1,4 +1,4 @@
-import { Music2, X } from "lucide-react";
+import { Music2, PanelLeftClose, X } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSongsStore } from "@/stores/songs";
 import { Button } from "@/components/ui/button";
@@ -7,9 +7,11 @@ import { cn } from "@/lib/utils";
 interface Props {
   isOpen: boolean;
   onClose: () => void;
+  desktopVisible?: boolean;
+  onDesktopToggle?: () => void;
 }
 
-export function Sidebar({ isOpen, onClose }: Props) {
+export function Sidebar({ isOpen, onClose, desktopVisible = true, onDesktopToggle }: Props) {
   const songs = useSongsStore((state) => state.songs);
   const navigate = useNavigate();
   const { id: currentId } = useParams<{ id?: string }>();
@@ -32,8 +34,9 @@ export function Sidebar({ isOpen, onClose }: Props) {
       <aside
         className={cn(
           "fixed top-0 left-0 w-[260px] h-screen bg-slate-900 flex flex-col z-[100] transition-transform duration-300 ease-in-out",
-          "md:translate-x-0",
-          isOpen ? "translate-x-0 shadow-[8px_0_30px_rgba(0,0,0,0.3)]" : "-translate-x-full md:translate-x-0"
+          isOpen ? "translate-x-0 shadow-[8px_0_30px_rgba(0,0,0,0.3)]" : "-translate-x-full",
+          !isOpen && desktopVisible && "md:translate-x-0",
+          !isOpen && !desktopVisible && "md:-translate-x-full"
         )}
         aria-label="Menu piosenek"
       >
@@ -52,6 +55,15 @@ export function Sidebar({ isOpen, onClose }: Props) {
             className="md:hidden text-slate-500 hover:bg-slate-800 hover:text-slate-400"
           >
             <X size={18} />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            onClick={onDesktopToggle}
+            aria-label="Ukryj sidebar"
+            className="hidden md:flex text-slate-500 hover:bg-slate-800 hover:text-slate-400"
+          >
+            <PanelLeftClose size={18} />
           </Button>
         </div>
 
