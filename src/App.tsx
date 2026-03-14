@@ -15,7 +15,7 @@ export function App() {
   const currentSong = id ? (songs.find((s) => s.id === id) ?? null) : null;
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen print:min-h-0 print:h-auto">
       <Sidebar
         isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
