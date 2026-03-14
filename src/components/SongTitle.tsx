@@ -1,44 +1,46 @@
-import { useState } from "react";
+import { ChevronDown, Music2 } from "lucide-react";
 import { useSongsStore, selectCurrentSong } from "@/stores/songs";
-import styles from "./SongTitle.module.css";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function SongTitle() {
-  const [isVisible, setIsVisible] = useState(false);
   const songs = useSongsStore((state) => state.songs);
   const selectSongById = useSongsStore((state) => state.selectSongById);
   const currentSong = useSongsStore(selectCurrentSong);
 
   const currentSongTitle = currentSong?.title ?? "Wybierz piosenkę";
 
-  function handleSelect(id: string) {
-    selectSongById(id);
-    setIsVisible(false);
-  }
-
   return (
-    <section className={styles.songTitle}>
-      <h1 className={styles.header}>
-        <button
-          className={styles.link}
-          onClick={() => setIsVisible((v) => !v)}
-          type="button"
-        >
-          {currentSongTitle}&nbsp;
-        </button>
-      </h1>
-      {isVisible && (
-        <div className={styles.dropdown}>
-          <ul>
-            {songs.map((song) => (
-              <li key={song.id}>
-                <button type="button" onClick={() => handleSelect(song.id)}>
-                  {song.title}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </section>
+    <div className="flex items-center justify-center py-4">
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button
+            variant="ghost"
+            className="text-2xl font-bold gap-2 h-auto py-2 px-4"
+          >
+            <Music2 className="size-6 shrink-0" />
+            {currentSongTitle}
+            <ChevronDown className="size-5 shrink-0 opacity-60" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="center" className="w-64">
+          {songs.map((song) => (
+            <DropdownMenuItem
+              key={song.id}
+              onSelect={() => selectSongById(song.id)}
+              data-current={song.id === currentSong?.id}
+              className="text-base cursor-pointer data-[current=true]:font-semibold"
+            >
+              {song.title}
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
   );
 }
