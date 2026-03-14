@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Music2 } from "lucide-react";
 import { Sidebar } from "./components/Sidebar";
 import { AppHeader } from "./components/AppHeader";
@@ -9,6 +9,29 @@ import styles from "./App.module.css";
 export function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const currentSong = useSongsStore(selectCurrentSong);
+  const selectSongById = useSongsStore((state) => state.selectSongById);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const songId = params.get("song");
+    if (songId) {
+      try {
+        selectSongById(songId);
+      } catch {
+        // unknown song id — ignore
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if (currentSong) {
+      url.searchParams.set("song", currentSong.id);
+    } else {
+      url.searchParams.delete("song");
+    }
+    history.replaceState(null, "", url.toString());
+  }, [currentSong?.id]);
 
   return (
     <div className={styles.layout}>
