@@ -1,6 +1,7 @@
 {
   "name": "notes-page",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
