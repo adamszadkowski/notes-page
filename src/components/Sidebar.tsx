@@ -1,4 +1,4 @@
-import { Music2, PanelLeftClose, X } from "lucide-react";
+import { Music2, PanelLeftClose, Printer, X } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSongsStore } from "@/stores/songs";
 import { Button } from "@/components/ui/button";
@@ -90,6 +90,17 @@ export function Sidebar({ isOpen, onClose, desktopVisible = true, onDesktopToggl
             ))}
           </ul>
         </nav>
+
+        <div className="px-3 py-3 border-t border-slate-800 shrink-0">
+          <Button
+            variant="ghost"
+            className="w-full justify-start gap-2 text-slate-400 hover:bg-slate-800 hover:text-slate-200"
+            onClick={() => window.print()}
+          >
+            <Printer size={16} />
+            <span className="text-sm">Drukuj</span>
+          </Button>
+        </div>
       </aside>
     </>
   );
