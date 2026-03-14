@@ -1,13 +1,15 @@
 import { fileURLToPath, URL } from "node:url";
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  base: process.env.NODE_ENV === "production" ? "/notes-page/" : "/",
-  plugins: [react()],
+  plugins: [react() as never],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
+  },
+  test: {
+    environment: "jsdom",
   },
 });

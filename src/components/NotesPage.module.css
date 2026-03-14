@@ -1,0 +1,9 @@
+.notesPage {
+  box-sizing: border-box;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-content: start;
+  row-gap: 15px;
+  padding: 30px;
+}

@@ -2,7 +2,7 @@ export interface Song {
   id: string;
   title: string;
   notesInRow: number;
-  notes: Array<Note>;
+  notes: Array<Note | null>;
 }
 
 export interface Note {

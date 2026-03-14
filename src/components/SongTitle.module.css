@@ -1,0 +1,82 @@
+.songTitle {
+  position: relative;
+}
+
+.header {
+  position: relative;
+  font-size: 1.8em;
+}
+
+.link {
+  color: #3c430b;
+  cursor: default;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #586311;
+}
+
+.link:hover::after {
+  border-color: #586311;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  top: 0.2em;
+  width: 0.4em;
+  height: 0.4em;
+  border: solid #3c430b;
+  border-width: 0 0.12em 0.12em 0;
+  transform: rotate(45deg);
+}
+
+@media print {
+  .link::after {
+    display: none;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  background-color: white;
+  z-index: 1;
+  box-shadow: 10px 10px 25px rgba(60, 67, 11, 0.4);
+}
+
+.dropdown ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown li {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: 5px;
+  padding-left: 10px;
+  background: rgb(243, 243, 243);
+  color: #3c430b;
+  cursor: default;
+  border-bottom: 1px solid rgb(224, 224, 224);
+}
+
+.dropdown li:last-child {
+  border-bottom: none;
+}
+
+.dropdown li:hover {
+  background: rgb(249, 249, 249);
+  color: #586311;
+}
+
+@media print {
+  .dropdown {
+    display: none;
+  }
+}
