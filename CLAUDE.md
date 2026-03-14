@@ -18,6 +18,8 @@ npm run preview                # Preview production build on port 4173
 
 # Testing
 npm run test:unit              # Run Vitest unit tests with jsdom
+npm run test:e2e               # Open Cypress for interactive e2e testing
+npm run test:e2e:ci            # Run Cypress tests headlessly (CI)
 
 # Code Quality
 npm run lint                   # Lint and auto-fix with ESLint
@@ -53,12 +55,14 @@ Notes use a special notation system:
 ### Component Hierarchy
 
 ```
-App.tsx
-├── SongTitle.tsx (song selector dropdown)
-└── NotesPage.tsx (receives song prop)
-    └── SingleNote.tsx (for each note)
-        └── BaseNote.tsx (colored circle + syllable)
-            └── Optional arrow SVG for octave modifiers
+main.tsx
+└── ErrorBoundary.tsx (catches render errors)
+    └── App.tsx
+        ├── SongTitle.tsx (song selector dropdown)
+        └── NotesPage.tsx (receives song prop)
+            └── SingleNote.tsx (for each note)
+                └── BaseNote.tsx (colored circle + syllable)
+                    └── Optional arrow SVG for octave modifiers
 ```
 
 - **NotesPage**: Renders song as CSS grid, dynamically sets columns based on `song.notesInRow`
@@ -73,9 +77,13 @@ Each component has a co-located CSS Module file (e.g., `BaseNote.module.css`).
 ### Key Implementation Details
 
 - **React 19** with TypeScript and TSX files
-- **Vite** is the build tool with `@vitejs/plugin-react`
-- **Zustand** for state management (replaces Pinia)
+- **Vite 6** is the build tool with `@vitejs/plugin-react`
+- **Zustand 5** for state management
 - **CSS Modules** for component styling
+- **ESLint 9** with flat config (`eslint.config.js`) — plugins: react-hooks, react-refresh, jsx-a11y, typescript-eslint
+- **Vitest** with jsdom — unit tests in `src/**/__tests__/`, setup via `src/test-setup.ts`
+- **Cypress** for e2e tests in `cypress/e2e/`
+- **ErrorBoundary** (`src/components/ErrorBoundary.tsx`) wraps the app in `main.tsx`
 - **Production base path** is `/notes-page/` (configured in vite.config.ts)
 - **Alias**: `@` points to `src/` directory
 - No routing — single-page app with no router
