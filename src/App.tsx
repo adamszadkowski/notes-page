@@ -23,7 +23,7 @@ export function App() {
         onDesktopToggle={() => setDesktopSidebarVisible((v) => !v)}
       />
 
-      <div className={`flex-1 flex flex-col min-w-0 transition-[margin] duration-300 ease-in-out ${desktopSidebarVisible ? "md:ml-[260px]" : "md:ml-0"}`}>
+      <div className={`flex-1 flex flex-col min-w-0 transition-[margin] duration-300 ease-in-out print:ml-0 ${desktopSidebarVisible ? "md:ml-[260px]" : "md:ml-0"}`}>
         <AppHeader
           onMenuClick={() => setSidebarOpen(true)}
           songTitle={currentSong?.title}
@@ -35,13 +35,13 @@ export function App() {
             size="icon"
             onClick={() => setDesktopSidebarVisible(true)}
             aria-label="Otwórz sidebar"
-            className="hidden md:flex fixed top-3 left-3 z-50 text-slate-500 hover:bg-slate-100"
+            className="hidden md:flex print:hidden fixed top-3 left-3 z-50 text-slate-500 hover:bg-slate-100"
           >
             <PanelLeftOpen size={20} />
           </Button>
         )}
 
-        <div className="flex-1 p-8 max-w-[900px] md:p-8 max-md:px-4 max-md:py-5">
+        <div className="flex-1 p-8 max-w-[900px] md:p-8 max-md:px-4 max-md:py-5 print:max-w-none print:p-0">
           {currentSong != null ? (
             <>
               <h1 className="text-[1.75rem] font-bold mb-7 text-slate-900 max-md:text-[1.4rem] max-md:mb-5 text-center">

@@ -25,7 +25,7 @@ export function Sidebar({ isOpen, onClose, desktopVisible = true, onDesktopToggl
     <>
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99] md:hidden"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99] md:hidden print:hidden"
           onClick={onClose}
           aria-hidden="true"
         />
@@ -33,7 +33,7 @@ export function Sidebar({ isOpen, onClose, desktopVisible = true, onDesktopToggl
 
       <aside
         className={cn(
-          "fixed top-0 left-0 w-[260px] h-screen bg-slate-900 flex flex-col z-[100] transition-transform duration-300 ease-in-out",
+          "fixed top-0 left-0 w-[260px] h-screen bg-slate-900 flex flex-col z-[100] transition-transform duration-300 ease-in-out print:hidden",
           isOpen ? "translate-x-0 shadow-[8px_0_30px_rgba(0,0,0,0.3)]" : "-translate-x-full",
           !isOpen && desktopVisible && "md:translate-x-0",
           !isOpen && !desktopVisible && "md:-translate-x-full"
