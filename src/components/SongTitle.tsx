@@ -18,20 +18,22 @@ export function SongTitle() {
   return (
     <section className={styles.songTitle}>
       <h1 className={styles.header}>
-        <a
+        <button
           className={styles.link}
           onClick={() => setIsVisible((v) => !v)}
-          role="button"
+          type="button"
         >
           {currentSongTitle}&nbsp;
-        </a>
+        </button>
       </h1>
       {isVisible && (
         <div className={styles.dropdown}>
           <ul>
             {songs.map((song) => (
-              <li key={song.id} onClick={() => handleSelect(song.id)}>
-                {song.title}
+              <li key={song.id}>
+                <button type="button" onClick={() => handleSelect(song.id)}>
+                  {song.title}
+                </button>
               </li>
             ))}
           </ul>
